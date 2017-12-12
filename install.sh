@@ -32,34 +32,33 @@ apt-get -y install fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-su zencash
 
 echo 'deb https://zencashofficial.github.io/repo/ '$(lsb_release -cs)' main' | sudo tee --append /etc/apt/sources.list.d/zen.list
 gpg --keyserver ha.pool.sks-keyservers.net --recv 219F55740BBF7A1CE368BA45FB7053CE4991B669
 gpg --export 219F55740BBF7A1CE368BA45FB7053CE4991B669 | sudo apt-key add -
 
-sudo apt-get update
-sudo apt-get install zen
-zen-fetch-params
+apt-get -y update
+apt-get -y install zen
+sudo -i -u zencash zen-fetch-params
 
-zend
+sudo -i -u zencash zend
 
 USERNAME=$(pwgen -s 16 1)
 PASSWORD=$(pwgen -s 64 1)
-cat <<EOF > ~/.zen/zen.conf
-rpcuser=$USERNAME
-rpcpassword=$PASSWORD
-rpcport=18231
-rpcallowip=127.0.0.1
-server=1
-daemon=1
-listen=1
-txindex=1
-logtimestamps=1
-### testnet config
-#testnet=1
-EOF
+sudo -i -u zencash echo "rpcuser=$USERNAME" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "rpcpassword=$PASSWORD" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "rpcport=18231" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "rpcallowip=127.0.0.1" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "server=1" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "daemon=1" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "listen=1" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "txindex=1" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "logtimestamps=1" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "### testnet config" >> /home/zencash/.zen/zen.conf
+sudo -i -u zencash echo "#testnet=1" >> /home/zencash/.zen/zen.conf
 
-zen-cli getinfo
+sudo -i -u zencash zend
+
+sudo -i -u zencash zen-cli getinfo
 
 
