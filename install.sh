@@ -42,4 +42,24 @@ sudo apt-get update
 sudo apt-get install zen
 zen-fetch-params
 
+zend
+
+USERNAME=$(pwgen -s 16 1)
+PASSWORD=$(pwgen -s 64 1)
+cat <<EOF > ~/.zen/zen.conf
+rpcuser=$USERNAME
+rpcpassword=$PASSWORD
+rpcport=18231
+rpcallowip=127.0.0.1
+server=1
+daemon=1
+listen=1
+txindex=1
+logtimestamps=1
+### testnet config
+#testnet=1
+EOF
+
+zen-cli getinfo
+
 
