@@ -8,7 +8,7 @@ apt -y install apt-transport-https ca-certificates curl software-properties-comm
 adduser --disabled-password --gecos "" zencash 
 usermod -g sudo zencash
 
-echo "zencash ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+#echo "zencash ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 fallocate -l 4G /swapfile
 chmod 600 /swapfile
