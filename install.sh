@@ -39,5 +39,7 @@ gpg --keyserver ha.pool.sks-keyservers.net --recv 219F55740BBF7A1CE368BA45FB7053
 gpg --export 219F55740BBF7A1CE368BA45FB7053CE4991B669 | sudo apt-key add -
 
 sudo apt-get update
-sudo apt-get install zen # to install Zen
+sudo apt-get install zen
 zen-fetch-params
+
+
