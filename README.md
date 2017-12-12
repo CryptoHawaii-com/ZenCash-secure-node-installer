@@ -1,0 +1,1 @@
+# ZenCash-secure-node-installer
