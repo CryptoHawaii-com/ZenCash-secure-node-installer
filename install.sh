@@ -8,8 +8,6 @@ apt -y install apt-transport-https ca-certificates curl software-properties-comm
 adduser --disabled-password --gecos "" zencash 
 usermod -g sudo zencash
 
-#echo "zencash ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
 fallocate -l 4G /swapfile
 chmod 600 /swapfile
 mkswap /swapfile
@@ -58,7 +56,7 @@ sudo -i -u zencash echo "### testnet config" >> /home/zencash/.zen/zen.conf
 sudo -i -u zencash echo "#testnet=1" >> /home/zencash/.zen/zen.conf
 
 sudo -i -u zencash zend
-
+sleep 2s
 sudo -i -u zencash zen-cli getinfo
 
 
