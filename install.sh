@@ -64,7 +64,10 @@ a2ensite default-ssl
 a2enmod ssl 
 systemctl restart apache2 
 
-sudo -i -u zen-cli z_getnewaddress
+sudo -i -u zencash zen-cli z_getnewaddress
+ZADDR=$(sudo -i -u zencash zen-cli z_listaddresses | tr -d '[] "')
+echo $ZADDR > /var/www/secnodeinfo.txt
+
 
 apt -y install npm
 npm install -g n
