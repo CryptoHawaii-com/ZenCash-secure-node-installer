@@ -3,7 +3,7 @@
 export DEBIAN_FRONTEND=noninteractive
 apt -y -o Acquire::ForceIPv4=true update
 apt-get -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
-apt -y install apt-transport-https ca-certificates curl software-properties-common git pwgen lsb-release
+apt -y install apt-transport-https ca-certificates curl software-properties-common git pwgen lsb-release apache2 php libapache2-mod-php php-mcrypt inotify-tools
 
 adduser --disabled-password --gecos "" zencash 
 usermod -g sudo zencash
@@ -59,4 +59,17 @@ sudo -i -u zencash zend
 sleep 2s
 sudo -i -u zencash zen-cli getinfo
 
+systemctl start apache2
+a2ensite default-ssl 
+a2enmod ssl 
+systemctl restart apache2 
+
+sudo -i -u zen-cli z_getnewaddress
+
+apt -y install npm
+npm install -g n
+n latest
+
+#need to move to post web script
+#sudo -i -u zencash mkdir /home/zencash/zencash && cd /home/zencash/zencash && git clone https://github.com/ZencashOfficial/secnodetracker.git && cd /home/zencash/zencash/secnodetracker && npm install && node setup.js
 
