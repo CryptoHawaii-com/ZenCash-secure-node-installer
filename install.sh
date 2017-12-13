@@ -63,6 +63,7 @@ systemctl start apache2
 a2ensite default-ssl 
 a2enmod ssl 
 systemctl restart apache2 
+rm -f /var/www/html/index.html
 
 sudo -i -u zencash zen-cli z_getnewaddress
 ZADDR=$(sudo -i -u zencash zen-cli z_listaddresses | tr -d '[] "')
