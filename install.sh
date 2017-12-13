@@ -68,7 +68,11 @@ rm -f /var/www/html/index.html
 sudo -i -u zencash zen-cli z_getnewaddress
 ZADDR=$(sudo -i -u zencash zen-cli z_listaddresses | tr -d '[] "')
 echo $ZADDR > /var/www/secnodeinfo.txt
-
+chown www-data.www-data /var/www/secnodeinfo.txt
+cd /var/www/html
+wget https://raw.githubusercontent.com/CryptoHawaii-com/ZenCash-secure-node-installer/master/webscript/index.php
+wget https://raw.githubusercontent.com/CryptoHawaii-com/ZenCash-secure-node-installer/master/webscript/deploy.php
+chown -R www-data.www-data /var/www/html
 
 apt -y install npm
 npm install -g n
