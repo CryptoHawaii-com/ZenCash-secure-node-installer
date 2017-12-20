@@ -5,9 +5,9 @@ Required: Fresh install Ubuntu 16.04
 
 ssh to server and run
 
-'''
+```
 bash -c "$(wget -O - https://raw.githubusercontent.com/CryptoHawaii-com/ZenCash-secure-node-installer/master/install.sh)"
-'''
+```
 
 One script is completed Access:
 
