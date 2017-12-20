@@ -83,8 +83,9 @@ n latest
 cd /root
 wget https://raw.githubusercontent.com/CryptoHawaii-com/ZenCash-secure-node-installer/master/scripts/postwebdeploy.sh
 chmod 755 postwebdeploy.sh
+
+echo "Please goto https://your.server.ip.address to complete the installation"
+
 /root/postwebdeploy.sh &
 
-#need to move to post web script
-#sudo -i -u zencash mkdir /home/zencash/zencash && cd /home/zencash/zencash && git clone https://github.com/ZencashOfficial/secnodetracker.git && cd /home/zencash/zencash/secnodetracker && npm install && node setup.js
 
