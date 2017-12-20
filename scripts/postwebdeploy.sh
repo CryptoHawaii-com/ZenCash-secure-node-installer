@@ -32,6 +32,16 @@ while inotifywait -e modify /var/www/secnodeinfo.txt; do
 	pm2 start app.js --name securenodetracker
 	pm2 startup
 	apt-get -y install monit
-
+	cd /home/zencash
+	wget https://raw.githubusercontent.com/CryptoHawaii-com/ZenCash-secure-node-installer/master/scripts/zen_node.sh
+	chmod 755 zen_node.sh
+	echo "set httpd port 2812" >> /etc/monit/monitrc
+	echo "use address localhost" >> /etc/monit/monitrc
+	echo "allow localhost" >> /etc/monit/monitrc
+	echo "check process zend with pidfile /home/zencash/.zen/zen_node.pid"  >> /etc/monit/monitrc
+	echo "start program = \"/home/zencash/zen_node.sh start\" with timeout 60 seconds" >> /etc/monit/monitrc
+	echo "stop program = \"/home/zencash/zen_node.sh stop\"" >> /etc/monit/monitrc
+	monit reload
+	monit start zend
 	break 
 done
